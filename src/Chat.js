@@ -1,7 +1,7 @@
 import React from 'react';
 import './Chat.css';
 import { Avatar, IconButton } from '@material-ui/core';
-import { MoreVert, SearchOutlined } from '@material-ui/icons';
+import { MoreVert, SearchOutlined, Mood, AttachFile } from '@material-ui/icons';
 
 function Chat() {
     return (
@@ -41,6 +41,11 @@ function Chat() {
                         new Date().toLocaleTimeString('en-US').substring(9)}
                     </span>
                 </p>
+            </div>
+            
+            <div className="chat__footer">
+                <Mood />
+                <AttachFile />
             </div>
         </div>
     )
