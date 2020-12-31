@@ -41,6 +41,11 @@
     margin-bottom: 30px;
 }
 
+.chat__reciever {
+    margin-left: auto;
+    background-color: #DCF8C6;
+}
+
 .chat__timestamp {
     margin-left: 10px;
     font-size: xx-small;
