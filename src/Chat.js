@@ -32,6 +32,15 @@ function Chat() {
                         new Date().toLocaleTimeString('en-US').substring(9)}
                     </span>
                 </p>
+
+                <p className="chat__message chat__reciever">
+                    <span className="chat__name">George</span>
+                    This is a message
+                    <span className="chat__timestamp">
+                        {new Date().toLocaleTimeString('en-US').substring(1,5) + " " +
+                        new Date().toLocaleTimeString('en-US').substring(9)}
+                    </span>
+                </p>
             </div>
         </div>
     )
