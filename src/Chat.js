@@ -1,7 +1,9 @@
 import React from 'react';
 import './Chat.css';
 import { Avatar, IconButton } from '@material-ui/core';
-import { MoreVert, SearchOutlined, Mood, AttachFile } from '@material-ui/icons';
+import { MoreVert, SearchOutlined } from '@material-ui/icons';
+import { Mood, AttachFile } from '@material-ui/icons';
+import MicIcon from '@material-ui/icons/Mic';
 
 function Chat() {
     return (
@@ -46,6 +48,12 @@ function Chat() {
             <div className="chat__footer">
                 <Mood />
                 <AttachFile />
+                <form>
+                    <input placeholder="Type a message"
+                    type="text"/>
+                    <button type="submit">Send</button>
+                </form>
+                <MicIcon />
             </div>
         </div>
     )
