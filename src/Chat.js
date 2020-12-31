@@ -28,7 +28,7 @@ function Chat() {
                     <span className="chat__name">Gbenga</span>
                     This is a message
                     <span className="chat__timestamp">
-                        {new Date().toUTCString()}
+                        {new Date().toUTCString().substring(17,22)}
                     </span>
                 </p>
             </div>
