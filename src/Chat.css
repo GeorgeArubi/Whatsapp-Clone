@@ -30,7 +30,7 @@
     overflow: scroll;
 }
 
-chat__message {
+.chat__message {
     position: relative;
     font-size: 14.2px;
     line-height: 19px;
