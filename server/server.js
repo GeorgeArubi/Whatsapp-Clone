@@ -2,10 +2,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Messages from './messages.js';
+import Pusher from 'pusher';
 
 // app config
 const app = express()
 const port = process.env.PORT || 9000
+
+const pusher = new Pusher({
+  appId: "1131488",
+  key: "32a73c3067223bcb5c05",
+  secret: "13c331408c3c6fb27071",
+  cluster: "us2",
+  useTLS: true
+});
 
 // middleware
 app.use(express.json())
@@ -20,7 +29,15 @@ mongoose.connect(connection_url, {
     useUnifiedTopology: true
 })
 
-// ????
+// pusher
+const db = mongoose.connection
+
+db.once('open', ()=> {
+    console.log('DB is connected')
+
+    const msgCollection = db.collection('whatsappmessages')
+    const changeStream = msgCollection.watch()
+})
 
 // api routes
 app.get('/', (req, res) => res.status(200).send('Hello world'))
