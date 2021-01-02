@@ -12,6 +12,7 @@ app.use(express.json())
 
 // db config
 const connection_url = 'mongodb+srv://admin:h5xHGvUxAcBqsLwx@cluster0.0s8su.mongodb.net/whatsapp_db?retryWrites=true&w=majority'
+// TODO replace mongo URI with defaukt placeholders
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
