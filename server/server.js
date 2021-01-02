@@ -11,7 +11,7 @@ const port = process.env.PORT || 9000
 app.use(express.json())
 
 // db config
-const connection_url = 'mongodb+srv://admin:h5xHGvUxAcBqsLwx@cluster0.0s8su.mongodb.net/whatsapp_db?retryWrites=true&w=majority'
+const connection_url = 'mongodb+srv://admin:<password>@cluster0.0s8su.mongodb.net/<db_name>?retryWrites=true&w=majority'
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
