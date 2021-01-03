@@ -6,6 +6,8 @@ import Pusher from 'pusher-js';
 import axios from './axios';
 
 function App() {
+  // Combine this build with previous whatsapp build
+
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
@@ -21,7 +23,7 @@ function App() {
 
     const channel = pusher.subscribe('messages');
     channel.bind('inserted', (newMessage) => {
-      alert(JSON.stringify(newMessage));
+      //alert(JSON.stringify(newMessage));
       setMessages([...messages, newMessage])
     })
 
