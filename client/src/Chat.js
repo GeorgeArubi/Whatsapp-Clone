@@ -5,7 +5,7 @@ import { MoreVert, SearchOutlined } from '@material-ui/icons';
 import { Mood, AttachFile } from '@material-ui/icons';
 import MicIcon from '@material-ui/icons/Mic';
 
-function Chat() {
+function Chat({ messages }) {
     return (
         <div className="chat">
             <div className="chat__header">
@@ -26,21 +26,21 @@ function Chat() {
             </div>
 
             <div className="chat__body">
-                <p className="chat__message">
-                    <span className="chat__name">Gbenga</span>
-                    This is a message
-                    <span className="chat__timestamp">
-                        {new Date().toLocaleTimeString('en-US').substring(1,5) + " " +
-                        new Date().toLocaleTimeString('en-US').substring(9)}
-                    </span>
+                {messages.map(message => (
+                    <p className={`chat__message ${!message.received && "chat__reciever"}`}>
+                    <span className="chat__name">{message.name}</span>
+                    {message.message}
+                    <span className="chat__timestamp">{message.timestamp}</span>
                 </p>
+                ))}
+                
 
                 <p className="chat__message chat__reciever">
                     <span className="chat__name">George</span>
                     This is a message
                     <span className="chat__timestamp">
-                        {new Date().toLocaleTimeString('en-US').substring(1,5) + " " +
-                        new Date().toLocaleTimeString('en-US').substring(9)}
+                        {new Date().toLocaleTimeString('en-US').substring(0,4) + " " +
+                        new Date().toLocaleTimeString('en-US').substring(8)}
                     </span>
                 </p>
             </div>
