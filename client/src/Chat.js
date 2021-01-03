@@ -4,12 +4,24 @@ import { Avatar, IconButton } from '@material-ui/core';
 import { MoreVert, SearchOutlined } from '@material-ui/icons';
 import { Mood, AttachFile } from '@material-ui/icons';
 import MicIcon from '@material-ui/icons/Mic';
+import axios from './axios'
 
 function Chat({ messages }) {
-    const [ input, setInput ] = useState(initialState)
+    const [input, setInput] = useState('')
 
-    const sendMessage = (e) => {
+    const currentTime = new Date().toLocaleTimeString('en-US').substring(0,5) + " " + new Date().toLocaleTimeString('en-US').substring(8)
+
+    const sendMessage = async (e) => {
         e.preventDefault()
+
+        await axios.post('/messages/new', {
+            message: input,
+            name: 'Placeholder Name',
+            timestamp: currentTime, // Rewrite function for timestamp
+            received: false, // Receive message based on the user sending it
+        })
+
+        setInput('')
     }
 
     return (
@@ -39,23 +51,15 @@ function Chat({ messages }) {
                     <span className="chat__timestamp">{message.timestamp}</span>
                 </p>
                 ))}
-                
-
-                <p className="chat__message chat__reciever">
-                    <span className="chat__name">George</span>
-                    This is a message
-                    <span className="chat__timestamp">
-                        {new Date().toLocaleTimeString('en-US').substring(0,4) + " " +
-                        new Date().toLocaleTimeString('en-US').substring(8)}
-                    </span>
-                </p>
             </div>
             
             <div className="chat__footer">
                 <Mood />
                 <AttachFile />
                 <form>
-                    <input placeholder="Type a message"
+                    <input value={input} 
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Type a message"
                     type="text"/>
                     <button onClick={sendMessage} type="submit">Send</button>
                 </form>
